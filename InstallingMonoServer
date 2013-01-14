@@ -1,0 +1,60 @@
+http://www.toptensoftware.com/Articles/6/Setting-up-a-Ubuntu-Apache-MySQL-Mono-ASP-NET-MVC-2-Development-Server
+
+Used the above tutorial.
+
+1. Installed apache2 server, mod-mono library for apache2, and mono-apache-server4
+
+2. Created a new site by copying the default. Stored it as "newapp" and then modified the configuration to use mono.
+Example is here:
+
+
+<VirtualHost *:80>
+	ServerAdmin webmaster@localhost
+	ServerName memorize.mono 
+    MonoAutoApplication disabled
+    AddHandler mono .aspx ascx .asax .ashx .config .cs .asmx .axd
+    MonoApplications "/:/var/www/memorize"
+    MonoServerPath default /usr/bin/mod-mono-server4
+
+	DocumentRoot /var/www/memorize
+	<Directory />
+		Options FollowSymLinks
+		AllowOverride None
+	</Directory>
+	<Directory /var/www/memorize>
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride None
+		Order allow,deny
+		allow from all
+        SetHandler mono
+        DirectoryIndex index.aspx index.html
+	</Directory>
+
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+3. Added the hostname to the etc hosts, 127.0.0.1 = memorize.mono
+
+4. Restarted apache server
+
+5. Added an index.aspx file to test if it worked. Example below 
+
+<%@ Page Language="C#" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.  dtd">
+<html>
+  
+  <head>      
+  <title>ASP Test Page</title>        
+  </head>          
+  <body>                  
+  <form id="form1" runat="server">                            
+  <asp:label id="lbl1" runat="server">ASP Test Page</asp:label>                                    
+  </form>                                      
+  </body>                                      
+  </html>
