@@ -36,6 +36,7 @@ namespace Memorize.Items
             } catch (InvalidOperationException ex) {
                 // mc does not have the operation Contains 
                 // so it must be a Memo, not a MemoList. OK to add
+                // Might want to log this ...
                 this.items.Add(mc);
             }
         }
@@ -55,8 +56,14 @@ namespace Memorize.Items
             }
         }
 
-        public void Clear()
+        public int GetCount() 
         {
+            return this.items.Count;
+        }
+
+        public override void Clear()
+        {
+            this._title = Clear();
             this.items.Clear();
         }
 
@@ -92,7 +99,6 @@ namespace Memorize.Items
             foreach (MemoComponent mc in this)
             {
                 sb.Append(mc.ToString() + "\n");
-                //sb.Append(mc.GetTitle() + "\n");
             }
             return sb.ToString();
         }

@@ -37,6 +37,12 @@ namespace Memorize.Items
             this._attrs.Add(a);
         }
 
+        public override void Clear()
+        {
+            this._title = "";
+            this._content = "";
+        }
+
         public override string ToString()
         {
             return GetTitle().ToString() + " : " + GetContent().ToString();

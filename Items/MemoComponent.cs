@@ -42,6 +42,12 @@ namespace Memorize.Items
             return this._title;
         }
 
+        public virtual void Clear()
+        {
+            throw new System.InvalidOperationException(
+                    "Clear() not implemented for this class");
+        }
+
         public virtual void SetTitle(string s)
         {
             this._title = s;
