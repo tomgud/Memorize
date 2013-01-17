@@ -18,7 +18,7 @@ namespace Memorize
             window.Resize(500, 500);
 
             // Status bar ...
-            icon = new StatusIcon(new Pixbuf("icon.png"));
+            icon = new StatusIcon(new Pixbuf("res/icon.png"));
             icon.Visible = true;
             icon.Activate += delegate { window.Visible = !window.Visible; };
             icon.Tooltip = "Yo imma let you finish";

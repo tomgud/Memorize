@@ -1,4 +1,5 @@
 using System;
+using Memorize.Items;
 
 namespace Memorize {
     public class Runner {
@@ -10,26 +11,19 @@ namespace Memorize {
             Memo m3 = new Memo("Title1", "Content3");
 
             MemoList ml1 = new MemoList();
+            ml1.SetTitle("MemoList1");
             MemoList ml2 = new MemoList();
+            ml1.SetTitle("MemoList2");
 
-            ml1.AddMemo(m1);
-            ml1.AddMemo(m2);
-            ml2.AddMemo(m3);
+            ml1.Add(m1);
+            ml1.Add(m2);
+            ml2.Add(m3);
 
-            ml1.AddList(ml2);
-            Console.WriteLine("MemoList one :");
-            foreach (Memo item in ml1) 
-            {
-                Console.WriteLine(item.ToString());
-            }
-
-            ml2.AddList(ml1);
-            ml2.Sort(MemoList.MemoListSortingEnumerator.Title);
-            Console.WriteLine("MemoList two :");
-            foreach (Memo item in ml2) 
-            {
-                Console.WriteLine(item.ToString());
-            }
+            ml1.Add(ml2);
+            Console.WriteLine(ml1.ToString());
+            ml2.Add(ml1);
+            ml2.Sort(MemoList.MemoListSortingEnumeration.Title);
+            Console.WriteLine(ml2.ToString());
         }
     }
 }
