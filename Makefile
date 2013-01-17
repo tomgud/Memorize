@@ -1,7 +1,7 @@
 CC      = mcs 
 TARGET	= main.exe 
 BIN_DIR = bin
-WEB_DEST = /var/www/memorize
+WEB_DEST = /var/www/memorize/code_behind
 
 GUITARGET = app.exe
 
@@ -30,7 +30,8 @@ gui: makebin copyres
 	$(CC) $(GUICONF) $(GUIOBJECTS) -out:$(BIN_DIR)/$(GUITARGET)
 
 web:
-	cp -R $(WEBOBJECTS) $(WEBDEST)/.
+	mkdir -p $(WEB_DEST)
+	cp -R $(WEBOBJECTS) $(WEB_DEST)/.
 
 clean: 
 	rm -f $(TARGET) $(GUITARGET)
