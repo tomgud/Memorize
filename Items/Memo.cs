@@ -32,21 +32,37 @@ namespace Memorize.Items
             this._content = s;
         }
 
-        public override void AddAttribute(Attribute a)
+        // Adding an attribute to this Memo
+        // Could make this a part of the interface
+        // since MemoLists could theoritcally have
+        // attributes as wells (tags f.example)
+        public void AddAttribute(Attribute a)
         {
             this._attrs.Add(a);
+        }
+
+        public void RemoveAttribute(Attribute a)
+        {
+            this._attrs.Remove(a);
         }
 
         public override void Clear()
         {
             this._title = "";
             this._content = "";
+            this._attrs.Clear();
         }
 
         public override string ToString()
         {
-            return GetTitle().ToString() + " : " + GetContent().ToString();
+            StringBuilder sb = new StringBuilder();
+            sb.Append(GetTitle().ToString() + " : " + GetContent().ToString());
+            foreach (Attribute a in this._attrs) 
+            {
+                // sb.Append("  " + a.ToString());
+                sb.Append("  " + a.Name + ": " + a.Value.ToString());
+            }
+            return sb.ToString();
         }
-
     }
 }

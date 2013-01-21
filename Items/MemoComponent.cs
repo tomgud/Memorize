@@ -65,12 +65,22 @@ namespace Memorize.Items
             throw new System.InvalidOperationException(
                     "SetContent() not implemented for this class");
         }
+        /*  These two methods could be a part of this interface
+         *  if both MemoItem and MemoComposite should have 
+         *  assignable attributes ... Currently it is only MemoItem
+         *//*
+        public virtual void AddAttribute(Attribute a)
+        {
+            throw new System.InvalidOperationException(
+                    "AddAttribute() not implemented for this class");
+        }
 
         public virtual void AddAttribute(Attribute a)
         {
             throw new System.InvalidOperationException(
                     "AddAttribute() not implemented for this class");
         }
+        */
         
     }
 }
