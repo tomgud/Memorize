@@ -1,6 +1,7 @@
 using System;
 using Gdk;
 using Gtk;
+using Memorize.Items;
 
 namespace Memorize.DesktopUI
 {

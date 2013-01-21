@@ -7,11 +7,11 @@ namespace Memorize.DesktopUI
 {
     public class BoardDisplay 
     {
-        private Alignment _boardHolder;
+        private VBox _boardHolder;
         private HBox _board;
         private int count = 0;
         private ArrayList memos;
-        public Alignment Board 
+        public VBox Board 
         {
             get 
             {
@@ -20,7 +20,9 @@ namespace Memorize.DesktopUI
         }
         public BoardDisplay() 
         {
-            _boardHolder = new Alignment(0, 0, 0, 0);
+            //_boardHolder = new Alignment(0, 0, 0, 0);
+            _boardHolder = new VBox(true, 5);
+            _boardHolder.SetSizeRequest(300, 300);
             _board = new HBox(true, 5);
             memos = new ArrayList();
         }
@@ -31,7 +33,11 @@ namespace Memorize.DesktopUI
             {
                 dis.Display(this._board);
             }
-            this._boardHolder.Add(this._board);
+
+            Adjustment sa = new Adjustment(0.0, 0.0, 101.0, 0.1, 1.0, 10.0);
+            HScrollbar sb = new HScrollbar(sa);
+            this._boardHolder.PackStart(this._board);
+            this._boardHolder.PackStart(sb);
         }
 
         public void AddMemoDisplay(MemoItemDisplay mid)

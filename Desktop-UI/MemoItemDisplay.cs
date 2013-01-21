@@ -1,5 +1,6 @@
 using System;
 using Memorize;
+using Memorize.Items;
 using Gtk;
 
 namespace Memorize.DesktopUI
@@ -28,14 +29,14 @@ namespace Memorize.DesktopUI
             Alignment titleAlign = new Alignment(0, 0, 0, 0);
             titleAlign.SetSizeRequest(80, 25);
             Label title = new Label();
-            title.Text = this._item.Title;
+            title.Text = this._item.GetTitle();
             title.SetAlignment(0, 0);
             titleAlign.Add(title);
 
             
             Alignment contentAlign = new Alignment(0, 0, 0, 1);
             Label content = new Label();
-            content.Text = this._item.Content;
+            content.Text = this._item.GetContent();
             content.SetSizeRequest(120, 140);
             content.SetAlignment(0, 0);
             content.LineWrap = true;
