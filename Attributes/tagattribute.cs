@@ -1,19 +1,17 @@
 namespace Memorize 
 {
-    public class TagAttribute 
+    public class TagAttribute : Attribute
     {
-        private string _name;
         private string _value;
 
         public string Name 
         {
             get 
             {
-                return this._name;
+                return "Tag";
             }
             set
             {
-                this._name = value;
             }
         }
 
@@ -34,6 +32,15 @@ namespace Memorize
                     // maybe throw an error here ?
                 }
             }
+        }
+
+        public TagAttribute()
+        {
+            this._value = "";
+        }
+        public TagAttribute(string t)
+        {
+            this._value = t;
         }
 
         public int CompareTo(Attribute t)

@@ -9,7 +9,7 @@ namespace Memorize.DesktopUI
     {
         private static Gtk.StatusIcon icon;
         private static Gtk.Window window;
-        public static void Main() 
+        public static void RunIt() 
         {
             Application.Init();
 
@@ -40,20 +40,20 @@ namespace Memorize.DesktopUI
             
             // Here I would create a specific widget that specializes
             // in displaying memos
-            
+/*       
             BoardDisplay mBoard = new BoardDisplay();
             mBoard.AddMemoDisplay(new MemoItemDisplay(new Memo("1", "one")));
             mBoard.AddMemoDisplay(new MemoItemDisplay(new Memo("2", "two")));
             mBoard.AddMemoDisplay(new MemoItemDisplay(new Memo("3", "three is an incredibly long text blah blah blah")));
             mBoard.AddMemoDisplay(new MemoItemDisplay(new Memo("4", "four")));
             mBoard.DrawBoard();
-            table1.Attach(mBoard.Board, 0, 1, 1, 2, Gtk.AttachOptions.Fill,
-                    Gtk.AttachOptions.Fill, 10, 10);
-
+            table1.Attach(mBoard.Board, 0, 1, 1, 2, Gtk.AttachOptions.Expand,
+                    Gtk.AttachOptions.Expand, 10, 10);
+*/
             // Ideally here I would attach something that inherits a widget
             // and is a menu for creating new memos
             table1.Attach(bottomRight, 1, 2, 1, 2, Gtk.AttachOptions.Fill,
-                    Gtk.AttachOptions.Shrink, 10, 10);
+                    Gtk.AttachOptions.Fill, 1, 1);
 
             window.Add(table1);
             window.ShowAll();

@@ -4,23 +4,21 @@ namespace Memorize
     public class DateAttribute : Attribute
     {
         DateTime _date;
-        string _name;
         public string Name 
         {
             get
             {
-                return _name;
+                return "Date";
             }
             set 
             {
-                _name = value;
             }
         }
         public object Value 
         {
             get 
             {
-                return _date;
+                return (object)_date;
             }
             set
             {
@@ -35,9 +33,17 @@ namespace Memorize
             }
         }
 
+        public DateAttribute(DateTime date)
+        {
+            this._date = date;
+        }
+
         public int CompareTo(Attribute t)
         {
-            return 0;
+            if (t.GetType() == typeof(DateAttribute))
+                return this._date.CompareTo((DateTime)t.Value);
+            else
+                return -1;
         }
 
     }
