@@ -63,7 +63,7 @@ namespace Memorize.Items
 
         public override void Clear()
         {
-            this._title = Clear();
+            this._title = "";
             this.items.Clear();
         }
 
