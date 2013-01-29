@@ -26,7 +26,7 @@ namespace Memorize.DesktopUI
         {
             foreach (MemoItemDisplay dis in memos)
             {
-                dis.Display(this._board);
+                dis.Display();
             }
 			this._board.ShowAll ();
         }

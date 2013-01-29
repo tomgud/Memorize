@@ -10,10 +10,10 @@ namespace Memorize.DesktopUI
 		{
 			Build ();
 			BoardDisplay mBoard = new BoardDisplay(MemoBoard);
-            mBoard.AddMemoDisplay(new MemoItemDisplay(new Memo("1", "Muna ad kaupa mjolk")));
-            mBoard.AddMemoDisplay(new MemoItemDisplay(new Memo("2", "two")));
-            mBoard.AddMemoDisplay(new MemoItemDisplay(new Memo("3", "three is an incredibly long text blah blah blah")));
-            mBoard.AddMemoDisplay(new MemoItemDisplay(new Memo("4", "four")));
+            mBoard.AddMemoDisplay(new MemoItemDisplay(new Memo("1", "Muna ad kaupa mjolk"), mBoard.Board));
+            mBoard.AddMemoDisplay(new MemoItemDisplay(new Memo("2", "two"), mBoard.Board));
+            mBoard.AddMemoDisplay(new MemoItemDisplay(new Memo("3", "three is an incredibly long text blah blah blah"), mBoard.Board));
+            mBoard.AddMemoDisplay(new MemoItemDisplay(new Memo("4", "four"), mBoard.Board));
             mBoard.DrawBoard();
 		}
 		protected void OnDeleteEvent (object sender, DeleteEventArgs a)
