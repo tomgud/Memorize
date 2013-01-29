@@ -7,7 +7,6 @@
   <import>
     <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <widget-library name="../bin/Debug/Memorize.exe" internal="true" />
-    <widget-library name="../../../../../usr/lib/monodevelop/AddIns/MonoDevelop.GtkCore/libstetic.dll" />
   </import>
   <widget class="Gtk.Window" id="Memorize.DesktopUI.MainWindow" design-size="962 831">
     <property name="MemberName">MainWindow</property>
