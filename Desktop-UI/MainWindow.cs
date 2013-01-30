@@ -6,15 +6,16 @@ namespace Memorize.DesktopUI
 {
 	public partial class MainWindow: Gtk.Window
 	{	
+		private BoardDisplay _board;
 		public MainWindow (): base (Gtk.WindowType.Toplevel)
 		{
 			Build ();
-			BoardDisplay mBoard = new BoardDisplay(MemoBoard);
-            mBoard.AddMemoDisplay(new MemoItemDisplay(new Memo("1", "Muna ad kaupa mjolk"), mBoard.Board));
-            mBoard.AddMemoDisplay(new MemoItemDisplay(new Memo("2", "two"), mBoard.Board));
-            mBoard.AddMemoDisplay(new MemoItemDisplay(new Memo("3", "three is an incredibly long text blah blah blah"), mBoard.Board));
-            mBoard.AddMemoDisplay(new MemoItemDisplay(new Memo("4", "four"), mBoard.Board));
-            mBoard.DrawBoard();
+			_board = new BoardDisplay(MemoBoard);
+            //mBoard.AddMemoDisplay(new MemoItemDisplay(new Memo("1", "Muna ad kaupa mjolk"), mBoard.Board));
+            //mBoard.AddMemoDisplay(new MemoItemDisplay(new Memo("2", "two"), mBoard.Board));
+            //mBoard.AddMemoDisplay(new MemoItemDisplay(new Memo("3", "three is an incredibly long text blah blah blah"), mBoard.Board));
+            //mBoard.AddMemoDisplay(new MemoItemDisplay(new Memo("4", "four"), mBoard.Board));
+            _board.DrawBoard();
 		}
 		protected void OnDeleteEvent (object sender, DeleteEventArgs a)
 		{
@@ -70,5 +71,11 @@ namespace Memorize.DesktopUI
             window.ShowAll();
             Application.Run();
 			*/
+
+		protected void NewMemoHandler (object sender, System.EventArgs e)
+		{
+			this._board.AddMemoDisplay(new MemoItemDisplay(new Memo("New Memo", "Click here to modify"), _board.Board));
+			_board.DrawBoard();
+		}
 	}
 }

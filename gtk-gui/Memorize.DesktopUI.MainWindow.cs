@@ -9,14 +9,15 @@ namespace Memorize.DesktopUI
 		private global::Gtk.HBox CenterHBox;
 		private global::Gtk.Alignment LeftAlignment;
 		private global::Gtk.Alignment CenterContainer;
-		private global::Gtk.ScrolledWindow GtkScrolledWindow;
+		private global::Gtk.ScrolledWindow GtkScrolledWindow1;
 		private global::Gtk.HBox MemoBoard;
 		private global::Gtk.Alignment MenuBarAlignment;
 		private global::Gtk.Fixed MenuBarContainer;
 		private global::Gtk.Label MenuBarTitle;
+		private global::Gtk.Button NewMemo;
 		private global::Gtk.Button MenuBarSaveAll;
 		private global::Gtk.Alignment BottomAlignment;
-		
+        
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);
@@ -57,20 +58,20 @@ namespace Memorize.DesktopUI
 			this.CenterContainer = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 			this.CenterContainer.Name = "CenterContainer";
 			// Container child CenterContainer.Gtk.Container+ContainerChild
-			this.GtkScrolledWindow = new global::Gtk.ScrolledWindow ();
-			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
-			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
-			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
+			this.GtkScrolledWindow1 = new global::Gtk.ScrolledWindow ();
+			this.GtkScrolledWindow1.Name = "GtkScrolledWindow1";
+			this.GtkScrolledWindow1.ShadowType = ((global::Gtk.ShadowType)(1));
+			// Container child GtkScrolledWindow1.Gtk.Container+ContainerChild
 			global::Gtk.Viewport w3 = new global::Gtk.Viewport ();
 			w3.ShadowType = ((global::Gtk.ShadowType)(0));
-			// Container child GtkViewport.Gtk.Container+ContainerChild
+			// Container child GtkViewport1.Gtk.Container+ContainerChild
 			this.MemoBoard = new global::Gtk.HBox ();
 			this.MemoBoard.Name = "MemoBoard";
 			this.MemoBoard.Homogeneous = true;
 			this.MemoBoard.Spacing = 6;
 			w3.Add (this.MemoBoard);
-			this.GtkScrolledWindow.Add (w3);
-			this.CenterContainer.Add (this.GtkScrolledWindow);
+			this.GtkScrolledWindow1.Add (w3);
+			this.CenterContainer.Add (this.GtkScrolledWindow1);
 			this.CenterHBox.Add (this.CenterContainer);
 			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.CenterHBox [this.CenterContainer]));
 			w7.Position = 1;
@@ -92,39 +93,54 @@ namespace Memorize.DesktopUI
 			w8.X = 10;
 			w8.Y = 10;
 			// Container child MenuBarContainer.Gtk.Fixed+FixedChild
+			this.NewMemo = new global::Gtk.Button ();
+			this.NewMemo.WidthRequest = 180;
+			this.NewMemo.HeightRequest = 60;
+			this.NewMemo.CanFocus = true;
+			this.NewMemo.Name = "NewMemo";
+			this.NewMemo.UseUnderline = true;
+			this.NewMemo.Label = global::Mono.Unix.Catalog.GetString ("New Memo");
+			this.MenuBarContainer.Add (this.NewMemo);
+			global::Gtk.Fixed.FixedChild w9 = ((global::Gtk.Fixed.FixedChild)(this.MenuBarContainer [this.NewMemo]));
+			w9.X = 10;
+			w9.Y = 40;
+			// Container child MenuBarContainer.Gtk.Fixed+FixedChild
 			this.MenuBarSaveAll = new global::Gtk.Button ();
+			this.MenuBarSaveAll.WidthRequest = 180;
+			this.MenuBarSaveAll.HeightRequest = 60;
 			this.MenuBarSaveAll.CanFocus = true;
 			this.MenuBarSaveAll.Name = "MenuBarSaveAll";
 			this.MenuBarSaveAll.UseUnderline = true;
 			this.MenuBarSaveAll.Label = global::Mono.Unix.Catalog.GetString ("Save notes");
 			this.MenuBarContainer.Add (this.MenuBarSaveAll);
-			global::Gtk.Fixed.FixedChild w9 = ((global::Gtk.Fixed.FixedChild)(this.MenuBarContainer [this.MenuBarSaveAll]));
-			w9.X = 10;
-			w9.Y = 50;
+			global::Gtk.Fixed.FixedChild w10 = ((global::Gtk.Fixed.FixedChild)(this.MenuBarContainer [this.MenuBarSaveAll]));
+			w10.X = 10;
+			w10.Y = 110;
 			this.MenuBarAlignment.Add (this.MenuBarContainer);
 			this.CenterHBox.Add (this.MenuBarAlignment);
-			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.CenterHBox [this.MenuBarAlignment]));
-			w11.Position = 2;
-			w11.Expand = false;
-			this.VBoxContainer.Add (this.CenterHBox);
-			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.VBoxContainer [this.CenterHBox]));
-			w12.Position = 1;
+			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.CenterHBox [this.MenuBarAlignment]));
+			w12.Position = 2;
 			w12.Expand = false;
-			w12.Fill = false;
+			this.VBoxContainer.Add (this.CenterHBox);
+			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.VBoxContainer [this.CenterHBox]));
+			w13.Position = 1;
+			w13.Expand = false;
+			w13.Fill = false;
 			// Container child VBoxContainer.Gtk.Box+BoxChild
 			this.BottomAlignment = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 			this.BottomAlignment.HeightRequest = 1;
 			this.BottomAlignment.Name = "BottomAlignment";
 			this.VBoxContainer.Add (this.BottomAlignment);
-			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.VBoxContainer [this.BottomAlignment]));
-			w13.Position = 2;
-			w13.Expand = false;
+			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.VBoxContainer [this.BottomAlignment]));
+			w14.Position = 2;
+			w14.Expand = false;
 			this.Add (this.VBoxContainer);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
 			this.Show ();
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
+			this.NewMemo.Clicked += new global::System.EventHandler (this.NewMemoHandler);
 		}
 	}
 }

@@ -39,33 +39,21 @@ namespace Memorize.DesktopUI
 
 		private void Construct()
 		{
-			// Title label
-			_titleLabel = new Label ();
-			_titleLabel.Text = this._item.GetTitle ();
-			_titleLabel.SetAlignment (0, 0);
-			// Label listener
-			_titleLabelListener = new EventBox ();
-			_titleLabelListener.ButtonPressEvent += new ButtonPressEventHandler (MemoTitlePressHandler);
-			_titleLabelListener.Add (_titleLabel);
-			// Title alignment
+			// Constructing title textview
+			_titleTextView = new TextView();
+			TextBuffer titleBuffer = _titleTextView.Buffer;
+			titleBuffer.Text = this._item.GetTitle();
+			// Constructing the title Alignment
 			_titleAlignment = new Alignment (0, 0, 0, 0);
 			_titleAlignment.SetSizeRequest (80, 25);
-			_titleAlignment.Add (_titleLabelListener);
-			_titleAlignment.ShowAll ();
-			// Content label
-			_contentLabel = new Label ();
-			_contentLabel.Text = this._item.GetContent ();
-			_contentLabel.SetSizeRequest (200, 140);
-			_contentLabel.SetAlignment (0, 0);
-			_contentLabel.LineWrap = true;
-			_contentLabel.Justify = Justification.Fill;
-			// Label listener
-			_contentLabelListener = new EventBox ();
-			_contentLabelListener.ButtonPressEvent += new ButtonPressEventHandler (MemoContentPressHandler);
-			_contentLabelListener.Add (_contentLabel);
-			// Content aligment
+			// Constructing content textview
+			_contentTextView = new TextView ();
+			TextBuffer contentBuffer = _contentTextView.Buffer;
+			contentBuffer.Text = this._item.GetContent();
+			// constructing content alignment
 			_contentAlignment = new Alignment (0, 0, 0, 1);
-			_contentAlignment.Add (_contentLabelListener);
+			SwitchTitleView(false);
+			SwitchContentView(false);
 		}
 
         public void Display ()
@@ -74,9 +62,7 @@ namespace Memorize.DesktopUI
             this._container.PackStart(_titleAlignment, false, false, 4);
             this._container.PackStart(_contentAlignment, false, false, 4);
             this._container.SetSizeRequest(220, 200);
-			this._container.ShowAll();
-
-            
+			this._container.ShowAll();   
         }
 
 		public void SwitchContentView (bool edit)
@@ -146,12 +132,12 @@ namespace Memorize.DesktopUI
 			} else {
 				// Saving information from textview and removing it
 				this._item.SetTitle(_titleTextView.Buffer.Text);
-				Console.WriteLine ("Setting memo title to " + _contentTextView.Buffer.Text);
+				Console.WriteLine ("Setting memo title to " + _titleTextView.Buffer.Text);
 				_titleTextView.Destroy();
 				// Creating label
 				_titleLabel = new Label();
 				_titleLabel.Text = this._item.GetTitle ();
-				_titleLabel.SetSizeRequest (200, 140);
+				_titleLabel.SetSizeRequest (200, 80);
 				_titleLabel.SetAlignment (0, 0);
 				_titleLabel.LineWrap = true;
 				_titleLabel.Justify = Justification.Fill;
@@ -159,6 +145,7 @@ namespace Memorize.DesktopUI
 				_titleLabelListener = new EventBox ();
 				_titleLabelListener.ButtonPressEvent += new ButtonPressEventHandler (MemoTitlePressHandler);
 				_titleLabelListener.Add (_titleLabel);
+				_titleLabelListener.SetSizeRequest(200, 80);
 				_titleAlignment.Add (_titleLabelListener);
 			}
 			this._container.ShowAll();
