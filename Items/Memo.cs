@@ -64,5 +64,38 @@ namespace Memorize.Items
             }
             return sb.ToString();
         }
+		
+		public override IEnumerator GetEnumerator()
+		{
+			return new NullEnumerator(this);
+		}
+		
+		private class NullEnumerator : IEnumerator 
+		{
+			private Memo _item;
+			public NullEnumerator(Memo item)
+			{
+				_item = item;
+			}
+			
+			public object Current 
+			{
+				get 
+				{
+					return _item;
+				}
+			}
+			
+			public void Reset ()
+			{
+				// Do nothing
+			}
+			
+			public bool MoveNext ()
+			{
+				// Do Nothing
+				return false;
+			}
+		}
     }
 }

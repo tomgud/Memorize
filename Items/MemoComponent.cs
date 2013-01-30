@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 
 namespace Memorize.Items
 {
@@ -17,22 +17,22 @@ namespace Memorize.Items
         /* Memo list methods */
         public virtual void Add(MemoComponent mc) 
         {
-            throw new System.InvalidOperationException(
+            throw new System.NotSupportedException(
                     "Add() not implemented for this class");
         }
         public virtual void Remove(MemoComponent mc) 
         {
-            throw new System.InvalidOperationException(
+			throw new System.NotSupportedException(
                     "Remove() not implemented for this class");
         }
         public virtual MemoComponent GetChild(int i) 
         {
-            throw new System.InvalidOperationException(
+			throw new System.NotSupportedException(
                     "GetChild() not implemented for this class");
         }
         public virtual bool Contains(MemoComponent mc)
         {
-            throw new System.InvalidOperationException(
+			throw new System.NotSupportedException(
                     "Contains() not implemented for this class");
         }
 
@@ -44,9 +44,14 @@ namespace Memorize.Items
 
         public virtual void Clear()
         {
-            throw new System.InvalidOperationException(
-                    "Clear() not implemented for this class");
+			throw new System.NotSupportedException(
+				"Clear() not implemented for this class");
         }
+		
+		public virtual IEnumerator GetEnumerator() 
+        {
+			throw new System.NotSupportedException("Method has not been implemented for this class");
+		}
 
         public virtual void SetTitle(string s)
         {
@@ -56,13 +61,13 @@ namespace Memorize.Items
         /* MemoItem methods come here */
         public virtual string GetContent()
         {
-            throw new System.InvalidOperationException(
+            throw new System.NotSupportedException(
                     "GetContent() not implemented for this class");
         }
 
         public virtual void SetContent(string s)
         {
-            throw new System.InvalidOperationException(
+            throw new System.NotSupportedException(
                     "SetContent() not implemented for this class");
         }
         /*  These two methods could be a part of this interface
@@ -71,13 +76,13 @@ namespace Memorize.Items
          *//*
         public virtual void AddAttribute(Attribute a)
         {
-            throw new System.InvalidOperationException(
+            throw new System.NotSupportedException(
                     "AddAttribute() not implemented for this class");
         }
 
         public virtual void AddAttribute(Attribute a)
         {
-            throw new System.InvalidOperationException(
+            throw new System.NotSupportedException(
                     "AddAttribute() not implemented for this class");
         }
         */

@@ -87,7 +87,7 @@ namespace Memorize.Items
             this.items.Sort(mc);
         }
 
-        public IEnumerator GetEnumerator() 
+        public override IEnumerator GetEnumerator() 
         {
             return this.items.GetEnumerator();
         }
